@@ -1,3 +1,5 @@
+from src.langgraphagenticai.state.state import State
+
 class BasicChatbotNode:
 
     def __init__(self, llm: str, model: str):

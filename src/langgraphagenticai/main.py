@@ -1,8 +1,8 @@
 import streamlit as st
 from src.langgraphagenticai.graph.graphbuilder import GraphBuilder
 from src.langgraphagenticai.ui.streamlitui.loadui import LoadStreamlitUI
-from src.langgraphagenticai.LLMS.groqllm import GroqLLM
-from src.langgraphagenticai.UI.streamlitui.display_result import DisplayResultStreamlit
+from src.langgraphagenticai.LLMs.groqllm import GroqLLM
+from src.langgraphagenticai.ui.streamlitui.display_result import DisplayResultStreamlit
 
 def load_langraph_agenticai_app():
 
@@ -34,10 +34,12 @@ def load_langraph_agenticai_app():
 
             try:
                 graph = graph_builder.setup_graph(usecase)
+                print(user_message)
                 DisplayResultStreamlit(usecase, graph, user_message).display_result_on_ui()
 
             except Exception as e:
                 st.error(f"Error setting up the graph for the selected use case: {e}")
-                return
 
-        
+        except Exception as e:
+            st.error(f"Error initializing the LLM model: {e}")
+        return

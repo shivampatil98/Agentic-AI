@@ -19,7 +19,10 @@ class GraphBuilder:
         return self.graph_builder
 
     def setup_graph(self, usecase: str):
+        print("setup_graph called:", usecase)
         if usecase == "Basic Chatbot":
+            self.basic_chatbot_build_graph()
+
             return self.graph_builder.compile()
         else:
             raise ValueError(f"Unsupported use case: {usecase}")

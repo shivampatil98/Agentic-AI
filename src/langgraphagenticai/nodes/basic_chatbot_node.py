@@ -2,9 +2,8 @@ from src.langgraphagenticai.state.state import State
 
 class BasicChatbotNode:
 
-    def __init__(self, llm: str, model: str):
+    def __init__(self, llm: str):
         self.llm = llm
-        self.model = model
 
     def process(self, state: State) -> dict:
         # Implement the logic for the basic chatbot using the specified LLM and model

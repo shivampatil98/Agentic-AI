@@ -1,3 +1,4 @@
+import traceback
 import streamlit as st
 from src.langgraphagenticai.graph.graphbuilder import GraphBuilder
 from src.langgraphagenticai.ui.streamlitui.loadui import LoadStreamlitUI
@@ -38,6 +39,7 @@ def load_langraph_agenticai_app():
                 DisplayResultStreamlit(usecase, graph, user_message).display_result_on_ui()
 
             except Exception as e:
+                traceback.print_exc()
                 st.error(f"Error setting up the graph for the selected use case: {e}")
 
         except Exception as e:

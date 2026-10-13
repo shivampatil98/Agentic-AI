@@ -25,14 +25,14 @@ class DisplayResultStreamlit:
             initial_state = {"messages": [user_message]}
             res = graph.invoke(initial_state)
             for message in res['messages']:
-                if type(message, HumanMessage):
+                if isinstance(message, HumanMessage):
                     with st.chat_message("user"):
                         st.write(message.content)
-                elif type(message) == ToolMessage:
+                elif isinstance(message, ToolMessage):
                     with st.chat_message("ai"):
                         st.write("Tool Call Start")
                         st.write(message.content)
                         st.write("Tool Call End")
-                elif type(message) == AIMessage and message.content:
+                elif isinstance(message, AIMessage) and message.content:
                     with st.chat_message("assistant"):
                         st.write(message.content)

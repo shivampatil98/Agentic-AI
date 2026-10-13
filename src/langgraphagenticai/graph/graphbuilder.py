@@ -35,15 +35,14 @@ class GraphBuilder:
         self.graph_builder.add_node("tools", tool_node)
         self.graph_builder.add_edge(START, "Chatbot")
         self.graph_builder.add_conditional_edges("Chatbot", tools_condition)
-        self.graph_builder.add_edge("Chatbot", END)
+        self.graph_builder.add_edge("tools", "Chatbot")
 
     def setup_graph(self, usecase: str):
         if usecase == "Basic Chatbot":
             self.basic_chatbot_build_graph()
-        elif usecase == "Chatbot with web":
+        elif usecase == "Chatbot with Web":
             self.chatbot_with_tools_build_graph()
-
         else:
-            raise ValueError(f"Unsupported use case: {usecase}")
+            raise ValueError(f"Unsupported use case: {usecase !r}")
 
         return self.graph_builder.compile()
